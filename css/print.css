@@ -1,0 +1,11 @@
+body {
+    font-family: arial;
+}
+
+h1 {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #c5c4c4;
+}
