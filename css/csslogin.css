@@ -1,0 +1,59 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Nunito Sans;
+}
+
+.card-body {
+  padding-bottom: 0;
+}
+
+.login-title {
+  font-family: Kalnia;
+  text-align: center;
+}
+
+.form-control,
+.form-check,
+.regist {
+  font-size: 15px;
+}
+
+/* icons */
+.person-icon {
+  position: absolute;
+  right: 25px;
+  top: 95px;
+}
+.lock-icon {
+  position: absolute;
+  right: 25px;
+  top: 143px;
+}
+
+.form-check {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-check a,
+.regist a {
+  text-decoration: none;
+}
+
+.btn {
+  width: 100%;
+  cursor: pointer;
+}
+
+.regist {
+  text-align: center;
+}
