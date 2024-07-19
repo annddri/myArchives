@@ -68,6 +68,7 @@ if (isset($_SESSION["login"])) {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- css -->
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/csslogin.css">
 </head>
 <body>

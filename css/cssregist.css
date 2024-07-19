@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .card-body {
+    padding-bottom: 0;
+  }
+
+  .reg-title {
+    font-family: Kalnia;
+    text-align: center;
+  }
+
+  .form-control,
+.form-check,
+.login {
+  font-size: 15px;
+}
+
+.login a {
+    text-decoration: none;
+  }
+  
+  .btn {
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .login {
+    text-align: center;
+  }
