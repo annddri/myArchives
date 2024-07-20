@@ -114,36 +114,5 @@ function del($no) {
     return mysqli_affected_rows($connect);
 }
 
-//regist data
-function regist($registData) {
-    global $connect;
-
-    $username = strtolower(stripslashes($registData["username"]));
-    $pw = mysqli_real_escape_string($connect, $registData["pw"]);
-    $pwConfirm = mysqli_real_escape_string($connect, $registData["pwConfirm"]);
-
-    $result = mysqli_query($connect, "SELECT username FROM pengguna WHERE username = '$username' ");
-    if (mysqli_fetch_assoc($result)) {
-        echo "<script>
-                alert('Username Sudah Terdaftar');
-            </script>";
-        return false;
-    }
-
-    if ($pw !== $pwConfirm) {
-        echo "<script>
-                alert('Konfirmasi Password Tidak Sesuai');
-            </script>";
-        return false;
-    }
-
-    $pw = password_hash($pw, PASSWORD_DEFAULT);
-
-    mysqli_query($connect, "INSERT INTO pengguna VALUES('', '$username', '$pw')");
-
-    return mysqli_affected_rows($connect);
-}
-
-
 ?>
 

@@ -39,7 +39,7 @@ if (isset($_POST["login"])) {
     }
 }
 
-if (isset($_SESSION["login"])) {
+if (isset($_SESSION["login"]) || isset($_SESSION["regist"])) {
     header("Location: web01.php");
     exit;
 }

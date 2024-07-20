@@ -1,22 +1,29 @@
 <?php
 require 'func.php';
 
-// session_start();
-// if (!isset($_SESSION["login"])) {
-//     header("Location: log.php");
-//     exit;
-// }
+session_start();
 
 if (isset($_POST["regist"])) {
-    if(regist($_POST) > 0) {
-        echo "<script>
-                alert('Anda Sudah Berhasil Registrasi');
-                document.location.href = 'web01.php';
-            </script>";
-    } else {
-        mysqli_error($connect);
+    $username = strtolower(stripslashes($_POST["username"]));
+    $pw = mysqli_real_escape_string($connect, $_POST["pw"]);
+    $pwConfirm = mysqli_real_escape_string($connect, $_POST["pwConfirm"]);
+
+    $result = mysqli_query($connect, "SELECT username FROM pengguna WHERE username = '$username' ");
+    if (mysqli_fetch_assoc($result)) {
+        $error1 = [];
+    } else if ($pw !== $pwConfirm) {
+        $error2 = [];
     }
+
+    $pw = password_hash($pw, PASSWORD_DEFAULT);
+
+    mysqli_query($connect, "INSERT INTO pengguna VALUES('', '$username', '$pw')");
+
+    $_SESSION["regist"] = true;
+
+    header("Location: web01.php");
 }
+
 ?>
 
 
@@ -47,12 +54,17 @@ if (isset($_POST["regist"])) {
 </head>
 <body>
     
-<section class="regist">
 <div class="card" style="width: 25rem;">
     <div class="card-body">
         <h2 class="reg-title">Sign Up</h2> <br>
 
-        <div class="regist reg-left">
+    <?php if (isset($error1)) : ?>
+        <p style="color: red; font-style: italic;">Username sudah digunakan, pilih username lain</p>
+    <?php endif; ?>
+    <?php if (isset($error2)) : ?>
+        <p style="color: red; font-style: italic;">Konfirmasi password tidak sesuai</p>
+    <?php endif; ?>
+
             <form action="" method="post">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -73,10 +85,8 @@ if (isset($_POST["regist"])) {
                     <p>You have an account?<a href="log.php">Sign In</a></p>
                 </div>
             </form>
-        </div>
     </div>
 </div>
-</section>
 
 </body>
 </html>
