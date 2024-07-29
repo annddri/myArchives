@@ -3,10 +3,11 @@ require 'func.php';
 
 session_start();
 
-if (!isset($_SESSION["login"])) {
-    header("Location: log.php");
+if (!isset($_SESSION["firstPage"])) {
+    header("Location: firstPage.php");
     exit;
 }
+
 
 if (isset($_GET["search"])) {
     $jumlahDataPerHalaman = 2;

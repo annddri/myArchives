@@ -12,6 +12,7 @@ if (isset($_COOKIE['id']) && isset($_COOKIE['key'])) {
 
     if ($key === hash('sha256', $hasil['username'])) {
         $_SESSION['login'] = true;
+        $_SESSION["firstPage"] = true;
     }
 }
 
@@ -26,6 +27,7 @@ if (isset($_POST["login"])) {
     if ($hasil = mysqli_fetch_assoc($results)) {
         if (password_verify($passwordLog, $hasil["password"])){
             $_SESSION["login"] = true;
+            $_SESSION["firstPage"] = true;
 
             if (isset ($_POST['remember'])) {
                 setcookie('id', $hasil['id'], time() + 60);
@@ -39,7 +41,7 @@ if (isset($_POST["login"])) {
     }
 }
 
-if (isset($_SESSION["login"]) || isset($_SESSION["regist"])) {
+if (isset($_SESSION["login"])) {
     header("Location: web01.php");
     exit;
 }

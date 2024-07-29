@@ -20,8 +20,14 @@ if (isset($_POST["regist"])) {
     mysqli_query($connect, "INSERT INTO pengguna VALUES('', '$username', '$pw')");
 
     $_SESSION["regist"] = true;
+    $_SESSION["firstPage"] = true;
 
     header("Location: web01.php");
+}
+
+if (isset($_SESSION["regist"])) {
+    header("Location: web01.php");
+    exit;
 }
 
 ?>
