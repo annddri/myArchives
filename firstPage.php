@@ -39,14 +39,14 @@ if (isset($_POST["sign"])) {
     <p><i class="bi bi-exclamation-lg"></i>Anda akan langsung diarahkan ke halaman utama apabila telah melakukan sign in sebelumnya.</p>
 </nav>
 
-<div class="isi">
+<div class="container">
     <h1 class="judul">Selamat Datang di <span>Ourchives</span></h1>
     <p class="note">simpan ingatanmu saat ini untuk dikenang di masa depan</p>
         <form action="" method="post">
-            <a href="log.php" name="sign"><button type="submit" class="btn btn-primary">Sign In</button></a>
-            <a href="regist.php" name="sign"><button type="submit" class="btn btn-primary">Sign Up</button></a>
+        <button type="submit" class="btn btn-primary"><a href="log.php" name="sign">Sign In</a></button>
+        <button type="submit" class="btn btn-primary"><a href="regist.php" name="sign">Sign Up</a></button>
         </form>
-</div>
+        </div>
 
 </body>
 </html>
